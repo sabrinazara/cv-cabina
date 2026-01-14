@@ -145,42 +145,6 @@
 </section>
 @endif
 
-
-{{-- TESTIMONIAL --}}
-<section class="bg-gray-50">
-  <div class="mx-auto max-w-7xl px-6 py-16">
-    
-    <div class="mx-auto max-w-3xl text-center">
-      <h3 class="text-sm font-semibold tracking-widest text-teal-600">TESTIMONIAL</h3>
-      <h2 class="mt-2 text-3xl font-bold text-gray-900">Simak Apa Kata Klien</h2>
-      <p class="mt-3 text-gray-600">
-        Beberapa ulasan singkat dari klien yang pernah bekerja sama.
-      </p>
-    </div>
-
-    <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-      @forelse ($testimonials as $testimonial)
-        <div class="rounded-2xl border border-gray-100 bg-white p-6 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-          <p class="text-sm italic leading-relaxed text-gray-700">
-            "{{ Str::limit($testimonial->content, 150) }}"
-          </p>
-
-          <div class="mt-5 border-t border-gray-100 pt-4">
-            <div class="font-bold text-gray-900">
-              {{ $testimonial->client_name }}
-            </div>
-            <div class="text-sm text-teal-600">
-              {{ $testimonial->client_title }}
-            </div>
-          </div>
-        </div>
-      @empty
-        <p class="md:col-span-3 text-center text-gray-500">
-          Belum ada testimoni yang ditambahkan.
-        </p>
-      @endforelse
-    </div>
-
   </div>
 </section>
 
