@@ -81,7 +81,31 @@
         </a>
       </div>
 
-      {{-- Card 5: Profile Settings --}}
+      {{-- Card 5: Education --}}
+      {{-- <div class="group rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+        <h4 class="text-lg font-semibold text-teal-700">Riwayat Pendidikan</h4>
+        <p class="mt-2 text-sm leading-relaxed text-gray-600">
+          Kelola data pendidikan dan riwayat akademik Anda.
+        </p>
+        <a href="{{ route('admin.education.index') }}"
+           class="mt-4 inline-flex items-center gap-2 rounded-full bg-teal-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-teal-700">
+          Lihat Semua <span aria-hidden="true">→</span>
+        </a>
+      </div> --}}
+
+      {{-- Card 6: Organizations --}}
+      <div class="group rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+        <h4 class="text-lg font-semibold text-teal-700">Organisasi</h4>
+        <p class="mt-2 text-sm leading-relaxed text-gray-600">
+          Kelola data organisasi dan komunitas yang Anda ikuti.
+        </p>
+        <a href="{{ route('admin.organizations.index') }}"
+           class="mt-4 inline-flex items-center gap-2 rounded-full bg-teal-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-teal-700">
+          Lihat Semua <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      {{-- Card 7: Profile Settings --}}
       <div class="group rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
         <h4 class="text-lg font-semibold text-teal-700">Pengaturan Profil</h4>
         <p class="mt-2 text-sm leading-relaxed text-gray-600">

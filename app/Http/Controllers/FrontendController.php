@@ -9,6 +9,7 @@ use App\Models\Project;
 use App\Models\Testimonial;
 use App\Models\PortfolioItem;
 use App\Models\Skill;
+use App\Models\Organization;
 
 class FrontendController extends Controller
 {
@@ -48,7 +49,10 @@ class FrontendController extends Controller
         // Data Testimonial (Simak Apa Kata Klien)
         $testimonials = Testimonial::all();
 
-        return view('about', compact('profile', 'testimonials'));
+        // Data Organisasi (Organizations/Communities)
+        $organizations = Organization::ordered()->get();
+
+        return view('about', compact('profile', 'testimonials', 'organizations'));
     }
 
     /**
@@ -90,3 +94,4 @@ class FrontendController extends Controller
         return view('testimonial', compact('testimonials'));
     }
 }
+

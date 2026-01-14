@@ -47,6 +47,9 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     // CRUD Resource Portofolio Item
     Route::resource('portfolio', PortfolioController::class); // admin/portfolio, admin/portfolio/create, dll.
 
+    // CRUD Resource Organisasi
+    Route::resource('organizations', Admin\OrganizationController::class);
+
     // Rute Khusus untuk Profile Setting
     Route::get('profile', [Admin\AdminController::class, 'profileEdit'])->name('profile.edit');
     Route::put('profile', [Admin\AdminController::class, 'profileUpdate'])->name('profile.update');
