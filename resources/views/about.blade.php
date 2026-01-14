@@ -4,49 +4,101 @@
 @section('title', 'About Us - Our Story')
 
 @section('content')
-    
-    {{-- Our Story Section --}}
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-8">My <span class="text-teal-600">Story</span></h2>
-            
-            <div class="flex justify-center mb-8">
-                @if ($profile->photo ?? null)
-                    <img src="{{ asset('storage/' . $profile->photo) }}" alt="{{ $profile->name }}" class="rounded-lg shadow-xl w-64 h-auto">
-                @else
-                    {{-- Ganti dengan gambar placeholder Anda --}}
-                @endif
-            </div>
 
-            <div class="max-w-4xl mx-auto text-lg text-gray-700 leading-relaxed">
-                <p>
-                    {{ $profile->description ?? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' }}
-                </p>
-                <p class="mt-4">
-                    {{-- Anda bisa menambahkan deskripsi panjang di sini, diambil dari field lain di ProfileSetting jika ada --}}
-                </p>
-            </div>
-        </div>
-    </section>
-
-    {{-- Testimonial Section (Simak Apa Kata Klien) --}}
-    <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-6 text-center">
-            <h3 class="text-xl text-teal-600 font-semibold mb-2">PORTFOLIO</h3> 
-            <h2 class="text-3xl font-bold mb-10">Simak Apa Kata Klien</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                @forelse ($testimonials as $testimonial)
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <p class="italic text-gray-700 mb-4">"{{ Str::limit($testimonial->content, 150) }}"</p>
-                        <div class="font-bold text-gray-900">{{ $testimonial->client_name }}</div>
-                        <div class="text-sm text-teal-600">{{ $testimonial->client_title }}</div>
-                    </div>
-                @empty
-                    <p class="md:col-span-3 text-gray-500">Belum ada testimoni yang ditambahkan.</p>
-                @endforelse
-            </div>
-        </div>
-    </section>
+{{-- OUR STORY --}}
+<section class="bg-white">
+  <div class="mx-auto max-w-7xl px-6 py-16 lg:py-20">
     
+    {{-- Header --}}
+    <div class="mx-auto max-w-3xl text-center">
+      <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+        My <span class="text-teal-600">Story</span>
+      </h2>
+      <p class="mt-4 text-base leading-relaxed text-gray-600">
+        Mengenal lebih dekat perjalanan, pengalaman, dan bidang yang saya tekuni.
+      </p>
+    </div>
+
+    {{-- Content --}}
+    <div class="mt-12 grid items-start gap-10 lg:grid-cols-12">
+      
+      {{-- Foto --}}
+      <div class="lg:col-span-4 flex justify-center lg:justify-start">
+        @if ($profile->photo ?? null)
+          <img
+            src="{{ asset('storage/' . $profile->photo) }}"
+            alt="{{ $profile->name ?? 'Profile Photo' }}"
+            class="w-72 rounded-2xl object-cover shadow-xl ring-1 ring-gray-200 transition duration-300 hover:scale-[1.02]"
+          />
+        @else
+          <div class="flex h-72 w-72 items-center justify-center rounded-2xl bg-gray-100 text-gray-500 shadow-inner ring-1 ring-gray-200">
+            <span class="text-sm">Foto belum tersedia</span>
+          </div>
+        @endif
+      </div>
+
+      {{-- Deskripsi --}}
+      <div class="lg:col-span-8">
+        <div class="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
+          <h3 class="text-xl font-semibold text-gray-900">
+            {{ $profile->name ?? 'Tentang Saya' }}
+          </h3>
+          <p class="mt-4 text-base leading-relaxed text-gray-700">
+            {{ $profile->description ?? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' }}
+          </p>
+
+          {{-- Jika nanti ada field tambahan (misal long_description), tinggal aktifkan ini --}}
+          {{-- 
+          @if(!empty($profile->long_description))
+            <p class="mt-4 text-base leading-relaxed text-gray-700">
+              {{ $profile->long_description }}
+            </p>
+          @endif 
+          --}}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+{{-- TESTIMONIAL --}}
+<section class="bg-gray-50">
+  <div class="mx-auto max-w-7xl px-6 py-16">
+    
+    <div class="mx-auto max-w-3xl text-center">
+      <h3 class="text-sm font-semibold tracking-widest text-teal-600">TESTIMONIAL</h3>
+      <h2 class="mt-2 text-3xl font-bold text-gray-900">Simak Apa Kata Klien</h2>
+      <p class="mt-3 text-gray-600">
+        Beberapa ulasan singkat dari klien yang pernah bekerja sama.
+      </p>
+    </div>
+
+    <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+      @forelse ($testimonials as $testimonial)
+        <div class="rounded-2xl border border-gray-100 bg-white p-6 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+          <p class="text-sm italic leading-relaxed text-gray-700">
+            “{{ Str::limit($testimonial->content, 150) }}”
+          </p>
+
+          <div class="mt-5 border-t border-gray-100 pt-4">
+            <div class="font-bold text-gray-900">
+              {{ $testimonial->client_name }}
+            </div>
+            <div class="text-sm text-teal-600">
+              {{ $testimonial->client_title }}
+            </div>
+          </div>
+        </div>
+      @empty
+        <p class="md:col-span-3 text-center text-gray-500">
+          Belum ada testimoni yang ditambahkan.
+        </p>
+      @endforelse
+    </div>
+
+  </div>
+</section>
+
 @endsection

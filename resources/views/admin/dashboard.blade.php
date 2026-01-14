@@ -2,56 +2,98 @@
 {{-- Asumsi 'layouts.app' adalah layout yang berisi navigasi admin --}}
 
 @section('content')
-<div class="container mx-auto px-4 py-8">
-    <h2 class="text-3xl font-bold mb-6">Selamat Datang di Dashboard Admin</h2>
+<section class="bg-gray-50">
+  <div class="mx-auto max-w-7xl px-6 py-10">
+
+    {{-- Header --}}
+    <div class="mb-8">
+      <h2 class="text-3xl font-bold tracking-tight text-gray-900">
+        Selamat Datang di Dashboard Admin
+      </h2>
+      <p class="mt-2 text-base leading-relaxed text-gray-600">
+        Gunakan menu navigasi atau kartu di bawah ini untuk mengelola konten portofolio Anda.
+      </p>
+    </div>
 
     {{-- Notifikasi Sukses --}}
     @if (session('success'))
-        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
-            <span class="block sm:inline">{{ session('success') }}</span>
+      <div class="mb-6 rounded-2xl border border-green-200 bg-green-50 px-5 py-4 text-green-800 shadow-sm">
+        <div class="flex items-start gap-3">
+          <div class="mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-full bg-green-100">
+            <span class="text-green-700">✓</span>
+          </div>
+          <div>
+            <p class="font-semibold">Berhasil</p>
+            <p class="text-sm text-green-800">{{ session('success') }}</p>
+          </div>
         </div>
+      </div>
     @endif
 
-    <p class="mb-8 text-lg text-gray-700">Gunakan menu navigasi di atas atau kartu di bawah ini untuk mengelola konten Portofolio Anda.</p>
-    
-    {{-- Mengubah grid-cols-3 menjadi grid-cols-4 jika Anda memiliki 4 kartu, atau tetap 3 --}}
-    <div class="grid grid-cols-1 md:grid-cols-5 gap-6"> 
-        
-        {{-- Card 1: Portfolio Items BARU (Menggantikan Projects Lama) --}}
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h4 class="text-xl font-semibold mb-3 text-teal-600">Proyek Portofolio</h4>
-            <p class="text-gray-600 mb-4">Kelola item portofolio, detail review, dan gambar utamanya.</p>
-            <a href="{{ route('admin.portfolio.index') }}" class="text-blue-500 hover:underline font-medium">Lihat Semua &rarr;</a>
-            {{-- Mengarah ke: /admin/portfolio --}}
-        </div>
-        
-        {{-- Card 2: Services --}}
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h4 class="text-xl font-semibold mb-3 text-teal-600">Layanan</h4>
-            <p class="text-gray-600 mb-4">Tambah, edit, atau hapus layanan yang Anda tawarkan.</p>
-            <a href="{{ route('admin.services.index') }}" class="text-blue-500 hover:underline font-medium">Lihat Semua &rarr;</a>
-        </div>
-        
-        {{-- Card 3: Testimonials --}}
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h4 class="text-xl font-semibold mb-3 text-teal-600">Testimoni Klien</h4>
-            <p class="text-gray-600 mb-4">Kelola testimoni yang muncul di halaman utama dan Testimonial.</p>
-            <a href="{{ route('admin.testimonials.index') }}" class="text-blue-500 hover:underline font-medium">Lihat Semua &rarr;</a>
-        </div>
+    {{-- Cards --}}
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
 
-        {{-- Card 4: Skills --}}
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h4 class="text-xl font-semibold mb-3 text-teal-600">Keahlian</h4>
-            <p class="text-gray-600 mb-4">Kelola keahlian Anda berdasarkan kategori keahlian.</p>
-            <a href="{{ route('admin.skills.index') }}" class="text-blue-500 hover:underline font-medium">Lihat Semua &rarr;</a>
-        </div>
+      {{-- Card 1: Portfolio Items --}}
+      <div class="group rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+        <h4 class="text-lg font-semibold text-teal-700">Proyek Portofolio</h4>
+        <p class="mt-2 text-sm leading-relaxed text-gray-600">
+          Kelola item portofolio, detail review, dan gambar utamanya.
+        </p>
+        <a href="{{ route('admin.portfolio.index') }}"
+           class="mt-4 inline-flex items-center gap-2 rounded-full bg-teal-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-teal-700">
+          Lihat Semua <span aria-hidden="true">→</span>
+        </a>
+      </div>
 
-        {{-- Card 5: Profile Settings --}}
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h4 class="text-xl font-semibold mb-3 text-teal-600">Pengaturan Profil</h4>
-            <p class="text-gray-600 mb-4">Perbarui data diri, foto profil, dan link CV Anda.</p>
-            <a href="{{ route('admin.profile.edit') }}" class="text-blue-500 hover:underline font-medium">Edit Profil &rarr;</a>
-        </div>
+      {{-- Card 2: Services --}}
+      <div class="group rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+        <h4 class="text-lg font-semibold text-teal-700">Layanan</h4>
+        <p class="mt-2 text-sm leading-relaxed text-gray-600">
+          Tambah, edit, atau hapus layanan yang Anda tawarkan.
+        </p>
+        <a href="{{ route('admin.services.index') }}"
+           class="mt-4 inline-flex items-center gap-2 rounded-full bg-teal-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-teal-700">
+          Lihat Semua <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      {{-- Card 3: Testimonials --}}
+      <div class="group rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+        <h4 class="text-lg font-semibold text-teal-700">Testimoni Klien</h4>
+        <p class="mt-2 text-sm leading-relaxed text-gray-600">
+          Kelola testimoni yang muncul di halaman utama dan halaman Testimonial.
+        </p>
+        <a href="{{ route('admin.testimonials.index') }}"
+           class="mt-4 inline-flex items-center gap-2 rounded-full bg-teal-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-teal-700">
+          Lihat Semua <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      {{-- Card 4: Skills --}}
+      <div class="group rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+        <h4 class="text-lg font-semibold text-teal-700">Keahlian</h4>
+        <p class="mt-2 text-sm leading-relaxed text-gray-600">
+          Kelola keahlian berdasarkan kategori dan level kemampuan.
+        </p>
+        <a href="{{ route('admin.skills.index') }}"
+           class="mt-4 inline-flex items-center gap-2 rounded-full bg-teal-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-teal-700">
+          Lihat Semua <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      {{-- Card 5: Profile Settings --}}
+      <div class="group rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+        <h4 class="text-lg font-semibold text-teal-700">Pengaturan Profil</h4>
+        <p class="mt-2 text-sm leading-relaxed text-gray-600">
+          Perbarui data diri, foto profil, dan link CV Anda.
+        </p>
+        <a href="{{ route('admin.profile.edit') }}"
+           class="mt-4 inline-flex items-center gap-2 rounded-full bg-teal-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-teal-700">
+          Edit Profil <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
     </div>
-</div>
+  </div>
+</section>
 @endsection

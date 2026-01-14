@@ -62,7 +62,7 @@
                 <p class="text-sm mt-2 font-bold mb-2">Lokasi:</p>
                 <p class="text-sm">Bandar Lampung, Lampung, Indonesia</p>
                 
-                <p class="text-xs mt-4">Copyright | Faiz Nizar Nu'aim</p>
+                <p class="text-xs mt-4">Copyright | Sabrina Az Zahra</p>
             </div>
             
             {{-- Kolom 2: Link --}}
