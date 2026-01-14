@@ -41,6 +41,31 @@
         </div>
     </section>
 
+        {{-- Skills Section (Keahlian yang Saya Miliki) --}}
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-xl text-teal-600 font-semibold mb-2">SKILLS</h3>
+            <h2 class="text-3xl font-bold mb-10">Keahlian yang Saya Miliki</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                @forelse ($skills as $skill)
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full {{ $skill->getBadgeColor() }} mb-3">
+                            {{ $skill->kategori }}
+                        </span>
+                        <h4 class="text-lg font-semibold mb-2">{{ $skill->nama }}</h4>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5 mb-2">
+                            <div class="bg-teal-600 h-2.5 rounded-full" style="width: {{ $skill->level }}%"></div>
+                        </div>
+                        <span class="text-xs text-gray-500">{{ $skill->level }}%</span>
+                    </div>
+                @empty
+                    <p class="col-span-4 text-gray-500">Belum ada keahlian yang ditambahkan.</p>
+                @endforelse
+            </div>
+        </div>
+    </section>
+
     {{-- Service Section (Yang Saya Kerjakan) --}}
     <section class="py-16 bg-gray-50">
         <div class="container mx-auto px-6 text-center">

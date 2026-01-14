@@ -15,7 +15,7 @@
     <p class="mb-8 text-lg text-gray-700">Gunakan menu navigasi di atas atau kartu di bawah ini untuk mengelola konten Portofolio Anda.</p>
     
     {{-- Mengubah grid-cols-3 menjadi grid-cols-4 jika Anda memiliki 4 kartu, atau tetap 3 --}}
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6"> 
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-6"> 
         
         {{-- Card 1: Portfolio Items BARU (Menggantikan Projects Lama) --}}
         <div class="bg-white p-6 rounded-lg shadow-lg">
@@ -39,7 +39,14 @@
             <a href="{{ route('admin.testimonials.index') }}" class="text-blue-500 hover:underline font-medium">Lihat Semua &rarr;</a>
         </div>
 
-        {{-- Card 4: Profile Settings --}}
+        {{-- Card 4: Skills --}}
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h4 class="text-xl font-semibold mb-3 text-teal-600">Keahlian</h4>
+            <p class="text-gray-600 mb-4">Kelola keahlian Anda berdasarkan kategori keahlian.</p>
+            <a href="{{ route('admin.skills.index') }}" class="text-blue-500 hover:underline font-medium">Lihat Semua &rarr;</a>
+        </div>
+
+        {{-- Card 5: Profile Settings --}}
         <div class="bg-white p-6 rounded-lg shadow-lg">
             <h4 class="text-xl font-semibold mb-3 text-teal-600">Pengaturan Profil</h4>
             <p class="text-gray-600 mb-4">Perbarui data diri, foto profil, dan link CV Anda.</p>

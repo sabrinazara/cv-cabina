@@ -42,6 +42,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::resource('services', Admin\ServiceController::class);
     Route::resource('projects', Admin\ProjectController::class);
     Route::resource('testimonials', Admin\TestimonialController::class);
+    Route::resource('skills', Admin\SkillController::class); // CRUD Keahlian
 
     // CRUD Resource Portofolio Item
     Route::resource('portfolio', PortfolioController::class); // admin/portfolio, admin/portfolio/create, dll.

@@ -8,6 +8,7 @@ use App\Models\Service;
 use App\Models\Project;
 use App\Models\Testimonial;
 use App\Models\PortfolioItem;
+use App\Models\Skill;
 
 class FrontendController extends Controller
 {
@@ -30,7 +31,10 @@ class FrontendController extends Controller
 
         $items = PortfolioItem::orderBy('project_date', 'desc')->take(6)->get();
 
-        return view('home', compact('profile', 'services', 'testimonials', 'items'));
+        // Data Keahlian (Skills)
+        $skills = Skill::all();
+
+        return view('home', compact('profile', 'services', 'testimonials', 'items', 'skills'));
     }
 
     /**
